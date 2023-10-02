@@ -71,7 +71,7 @@ fun HomePanelPreviewMyHome() {
     ComposeDemoTheme {
         HomeInformationPanel(
             iconPainter = rememberVectorPainter(image = Icons.Default.Home),
-            name = "My home",
+            name = "Mario Rossi's home",
             address = "Via Mazzini 24 - Trento",
         )
     }

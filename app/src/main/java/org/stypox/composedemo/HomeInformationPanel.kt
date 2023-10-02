@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import org.stypox.composedemo.ui.theme.ComposeDemoTheme
 
 @Composable
-fun Header(iconPainter: Painter, name: String, address: String) {
+fun HomeInformationPanel(iconPainter: Painter, name: String, address: String) {
     Column(
         Modifier
             .padding(16.dp)
@@ -55,9 +55,9 @@ fun Header(iconPainter: Painter, name: String, address: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun HeaderPreviewSpeckTech() {
+fun HomePanelPreviewSpeckTech() {
     ComposeDemoTheme {
-        Header(
+        HomeInformationPanel(
             iconPainter = painterResource(R.drawable.small_logo_alone),
             name = "Impact Hub",
             address = "Via Roberto da Sanseverino 95 - Trento",
@@ -67,9 +67,9 @@ fun HeaderPreviewSpeckTech() {
 
 @Preview(showBackground = true)
 @Composable
-fun HeaderPreviewMyHome() {
+fun HomePanelPreviewMyHome() {
     ComposeDemoTheme {
-        Header(
+        HomeInformationPanel(
             iconPainter = rememberVectorPainter(image = Icons.Default.Home),
             name = "My home",
             address = "Via Mazzini 24 - Trento",

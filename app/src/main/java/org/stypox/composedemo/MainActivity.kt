@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
                             style = MaterialTheme.typography.labelMedium,
                         )
 
-                        Device()
+                        DevicePanel()
                     }
                 }
             }

@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Divider
@@ -48,6 +50,7 @@ class MainActivity : ComponentActivity() {
                 ) { paddingValues ->
                     Column(
                         modifier = Modifier.padding(paddingValues)
+                            .verticalScroll(rememberScrollState())
                     ) {
                         HomeInformationPanel(
                             iconPainter = painterResource(R.drawable.small_logo_alone),

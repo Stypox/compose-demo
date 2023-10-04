@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DevicePanel(@PreviewParameter(DeviceDataPreviewParameterProvider::class) data: DeviceData) {
     var expanded by rememberSaveable { mutableStateOf(false) }
+    var enabled by rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -38,7 +39,7 @@ fun DevicePanel(@PreviewParameter(DeviceDataPreviewParameterProvider::class) dat
 
         if (expanded) {
             Spacer(modifier = Modifier.height(8.dp))
-            DeviceFooter(data = data)
+            DeviceFooter(data, enabled) { enabled = it }
         }
     }
 }
@@ -77,17 +78,20 @@ fun DeviceHeader(
 }
 
 @Composable
-fun DeviceFooter(data: DeviceData) {
+fun DeviceFooter(
+    data: DeviceData,
+    enabled: Boolean,
+    setEnabled: (Boolean) -> Unit,
+) {
     Column {
         Text(
             text = data.description,
             style = MaterialTheme.typography.bodyMedium,
         )
 
-        var switchChecked by rememberSaveable { mutableStateOf(false) }
         Switch(
-            checked = switchChecked,
-            onCheckedChange = { switchChecked = it },
+            checked = enabled,
+            onCheckedChange = setEnabled,
             modifier = Modifier.align(Alignment.CenterHorizontally),
         )
     }

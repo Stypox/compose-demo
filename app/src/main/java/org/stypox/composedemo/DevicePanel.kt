@@ -1,9 +1,9 @@
 package org.stypox.composedemo
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -28,7 +28,11 @@ import androidx.compose.ui.unit.dp
 fun DevicePanel(@PreviewParameter(DeviceDataPreviewParameterProvider::class) data: DeviceData) {
     var expanded by rememberSaveable { mutableStateOf(false) }
 
-    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .animateContentSize(),
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {

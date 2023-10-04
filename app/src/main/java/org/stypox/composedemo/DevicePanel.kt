@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -77,8 +78,17 @@ fun DeviceHeader(
 
 @Composable
 fun DeviceFooter(data: DeviceData) {
-    Text(
-        text = data.description,
-        style = MaterialTheme.typography.bodyMedium,
-    )
+    Column {
+        Text(
+            text = data.description,
+            style = MaterialTheme.typography.bodyMedium,
+        )
+
+        var switchChecked by rememberSaveable { mutableStateOf(false) }
+        Switch(
+            checked = switchChecked,
+            onCheckedChange = { switchChecked = it },
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+        )
+    }
 }

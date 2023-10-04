@@ -33,39 +33,52 @@ fun DevicePanel(@PreviewParameter(DeviceDataPreviewParameterProvider::class) dat
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .animateContentSize(),
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = data.icon,
-                contentDescription = data.title,
-                modifier = Modifier.size(32.dp),
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column(
-                modifier = Modifier.weight(1.0f)
-            ) {
-                Text(
-                    text = data.title,
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                Text(
-                    text = data.positionInHome,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            }
-            ElevatedButton(onClick = { expanded = !expanded }) {
-                Text(text = if (expanded) "Less" else "More")
-            }
-        }
+        DeviceHeader(data, expanded) { expanded = !expanded }
 
         if (expanded) {
             Spacer(modifier = Modifier.height(8.dp))
+            DeviceFooter(data = data)
+        }
+    }
+}
 
+@Composable
+fun DeviceHeader(
+    data: DeviceData,
+    expanded: Boolean,
+    onToggleExpanded: () -> Unit,
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            imageVector = data.icon,
+            contentDescription = data.title,
+            modifier = Modifier.size(32.dp),
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Column(
+            modifier = Modifier.weight(1.0f)
+        ) {
             Text(
-                text = data.description,
+                text = data.title,
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = data.positionInHome,
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
+        ElevatedButton(onClick = onToggleExpanded) {
+            Text(text = if (expanded) "Less" else "More")
+        }
     }
+}
+
+@Composable
+fun DeviceFooter(data: DeviceData) {
+    Text(
+        text = data.description,
+        style = MaterialTheme.typography.bodyMedium,
+    )
 }

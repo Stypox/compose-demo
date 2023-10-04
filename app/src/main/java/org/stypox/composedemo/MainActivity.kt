@@ -66,7 +66,9 @@ class MainActivity : ComponentActivity() {
                             style = MaterialTheme.typography.labelMedium,
                         )
 
-                        DevicePanel()
+                        deviceDataList.forEach {
+                            DevicePanel(data = it)
+                        }
                     }
                 }
             }
